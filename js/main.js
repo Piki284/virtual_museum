@@ -51,28 +51,11 @@ if (!Detector.webgl) {
             controls.enableZoom = true;
             /* Events */
             window.addEventListener('resize', onWindowResize, false);
-            window.addEventListener('keydown', onKeyboardEvent, false);
         }
         function onWindowResize() {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-        }
-        function onKeyboardEvent(e) {
-            if (e.code === 'KeyL') {
-                lighting = !lighting;
-                if (lighting) {
-                    ambient.intensity = 0.25;
-                    scene.add(keyLight);
-                    scene.add(fillLight);
-                    scene.add(backLight);
-                } else {
-                    ambient.intensity = 1.0;
-                    scene.remove(keyLight);
-                    scene.remove(fillLight);
-                    scene.remove(backLight);
-                }
-            }
         }
         function animate() {
             requestAnimationFrame(animate);
